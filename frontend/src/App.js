@@ -10,24 +10,29 @@ import SignUp from './container/SignUp'
 import NotFound from './components/NotFound'
 import Layout from './hocs/Layout'
 
+import { Provider } from 'react-redux'
+import store from './store'
+
 import './sass/main.scss'
 
 const App = () => {
   return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/listings' component={Listings} />
-          <Route path='/listings/:id' component={ListingDetails} />
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={SignUp} />
-          <Route component={NotFound} />
-        </Switch>
-      </Layout>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/listings' component={Listings} />
+            <Route path='/listings/:id' component={ListingDetails} />
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={SignUp} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Router>
+    </Provider>
   )
 }
 
